@@ -6,7 +6,7 @@ function Test() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/food");
+        const response = await fetch("http://localhost:8000/");
         const jsonData = await response.json();
         setData(jsonData);
       } catch (error) {
