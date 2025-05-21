@@ -1,24 +1,18 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {  LoginPage, SignupPage,  } from "./pages/auth";
 
 function App() {
-  const [data, setData] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/api/food");
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
 
-    fetchData();
-  }, []);
-
-  return <>{data ? JSON.stringify(data) : "Loading..."}</>;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/login" element={<LoginPage  />} />
+        <Route path="/signup" element={<SignupPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
